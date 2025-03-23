@@ -7,20 +7,20 @@ import bebeDurmiendo from '@/assets/images/bebe_durmiendo.jpg';
 
 const testimonials = [
   {
-    content: "Gracias a Paula, mi bebé duerme toda la noche. El método que utilizó se adaptó perfectamente a nuestra familia y ahora todos descansamos mejor.",
-    author: "— Mamá Feliz"
+    content: "Nos costaba mucho cambiarle de habitación pero con las pautas que nos dieron fue super fácil.",
+    author: "— Vicky Marcos"
   },
   {
     content: "El seguimiento constante fue clave. Paula nos acompañó durante todo el proceso y siempre estuvo disponible para resolver nuestras dudas.",
-    author: "— Familia Pérez"
+    author: "— Teresa Coll"
   },
   {
     content: "Ya no hay peleas a la hora de dormir. Nuestro hijo aprendió a dormirse solo y ahora disfrutamos mucho más de las tardes en familia.",
-    author: "— Familia Rodríguez"
+    author: "— Javier Montero"
   },
   {
     content: "Pasamos de despertarnos 5-6 veces cada noche a dormir 12 horas seguidas. Ha sido un cambio increíble para toda la familia.",
-    author: "— Ana G."
+    author: "— Gonzalo Kirsch"
   },
   {
     content: "Pensábamos que era imposible, pero en solo dos semanas nuestro bebé aprendió a conciliar el sueño sin ayuda. Paula es una profesional excepcional.",
@@ -28,7 +28,7 @@ const testimonials = [
   },
   {
     content: "La metodología es respetuosa y se adapta a las necesidades de cada familia. Los resultados son sorprendentes y duraderos.",
-    author: "— Familia Martínez"
+    author: "— María Teresa Romero"
   },
 ];
 

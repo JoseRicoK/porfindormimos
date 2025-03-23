@@ -264,9 +264,8 @@ export default function Home() {
         
         <div className="p-6">
           <p className="text-gray-600 text-sm leading-relaxed">
-            Especialista en hábitos de sueño saludables para bebés y niños.
-            Mi prioridad es encontrar soluciones personalizadas que respeten
-            las necesidades de cada familia y favorezcan un descanso reparador.
+          Madre de dos niños menores de 3 años.
+          Pediatra especializada en urgencias y cuidados intensivos, especialista en sueño pediátrico, asesora de lactancia e interesada en intervenciones de apego seguro.
           </p>
         </div>
       </div>
