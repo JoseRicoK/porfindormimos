@@ -19,6 +19,11 @@ const nextConfig = {
         hostname: 'images.pexels.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'backporfindormimos.onrender.com',
+        pathname: '/uploads/**',
+      },
     ],
   },
   // Configuración para ignorar errores TypeScript en construcción

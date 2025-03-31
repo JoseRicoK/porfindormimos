@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Configuración de la API de Strapi
-const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337';
+const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'https://backporfindormimos.onrender.com';
 const API_TOKEN = process.env.STRAPI_API_TOKEN;
 
 // Cliente Axios configurado
@@ -9,7 +9,7 @@ const strapiApi = axios.create({
   baseURL: `${API_URL}/api`,
   headers: {
     ...(API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {}),
-    'Origin': 'http://localhost:3000',
+    'Origin': typeof window !== 'undefined' ? window.location.origin : 'https://porfindormimos.es',
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   },
