@@ -356,9 +356,9 @@ export default function Home() {
           trazaremos un plan personalizado para tu bebé, ¡y tú podrás volver a
           disfrutar de un sueño reparador!
         </p>
-        <a href="#contacto" className="inline-block bg-white text-[#4a5d73] px-8 py-4 rounded-full font-bold transition-all duration-300 hover:bg-[#a3c5e9] hover:text-[#2c3e50] hover:scale-105 shadow-lg">
+        <Link href="/contacto" className="inline-block bg-white text-[#4a5d73] px-8 py-4 rounded-full font-bold transition-all duration-300 hover:bg-[#a3c5e9] hover:text-[#2c3e50] hover:scale-105 shadow-lg">
           Contáctame
-        </a>
+        </Link>
       </section>
     </main>
   );

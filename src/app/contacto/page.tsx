@@ -58,34 +58,47 @@ export default function Contacto() {
     });
 
     try {
-      // Simular una llamada a API con un pequeño delay
-      // En una implementación real, esto se conectaría con tu backend
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Enviar el formulario a Formspree
+      const response = await fetch('https://formspree.io/f/xvgkbnpz', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
 
-      console.log("Formulario enviado:", formData);
+      const data = await response.json();
       
-      setStatus({
-        submitted: true,
-        submitting: false,
-        info: { error: false, msg: "¡Mensaje enviado correctamente!" },
-      });
-      
-      setFormData({ 
-        nombre: "", 
-        email: "", 
-        telefono: "", 
-        asunto: "", 
-        mensaje: "" 
-      });
-      
-      setTimeout(() => {
+      if (response.ok) {
+        // Éxito - formulario enviado correctamente
         setStatus({
-          submitted: false,
+          submitted: true,
           submitting: false,
-          info: { error: false, msg: null },
+          info: { error: false, msg: "¡Mensaje enviado correctamente!" },
         });
-      }, 5000);
-      
+        
+        // Limpiar el formulario
+        setFormData({ 
+          nombre: "", 
+          email: "", 
+          telefono: "", 
+          asunto: "", 
+          mensaje: "" 
+        });
+        
+        // Ocultar el mensaje de éxito después de 5 segundos
+        setTimeout(() => {
+          setStatus({
+            submitted: false,
+            submitting: false,
+            info: { error: false, msg: null },
+          });
+        }, 5000);
+      } else {
+        // Error - algo falló en el envío
+        throw new Error(data.error || 'Hubo un problema al enviar el formulario.');
+      }
     } catch (err) {
       console.error('Error al enviar el formulario:', err);
       setStatus({
@@ -109,7 +122,9 @@ export default function Contacto() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a 
-                  href="#formulario" 
+                  href="https://wa.me/34699851245" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white text-[#4a5d73] px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition duration-200 inline-flex items-center"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -118,13 +133,15 @@ export default function Contacto() {
                   Enviar mensaje
                 </a>
                 <a 
-                  href="#calendario" 
+                  href="https://wa.me/34699851245" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-xl font-medium hover:bg-white/10 transition duration-200 inline-flex items-center"
                 >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  <svg className="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
-                  Reservar cita
+                  WhatsApp
                 </a>
               </div>
             </div>
@@ -137,8 +154,8 @@ export default function Contacto() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white/70 text-sm">Llámanos</p>
-                    <p className="text-white font-medium">+34 XXX XXX XXX</p>
+                    <p className="text-white/70 text-sm">WhatsApp</p>
+                    <p className="text-white font-medium">+34 699851245</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -149,7 +166,7 @@ export default function Contacto() {
                   </div>
                   <div>
                     <p className="text-white/70 text-sm">Escríbenos</p>
-                    <p className="text-white font-medium">info@porfindormimos.es</p>
+                    <p className="text-white font-medium">porfindormimos@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -164,12 +181,12 @@ export default function Contacto() {
       <section className="relative z-10 px-5 -mt-12">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-2xl shadow-lg p-6 transition-transform hover:scale-[1.02]">
-            <div className="p-3 bg-[#EDF4FF] inline-block rounded-xl mb-4">
-              <HiOutlinePhone className="w-7 h-7 text-[#4a5d73]" />
+            <div className="p-3 bg-[#25D366] inline-block rounded-xl mb-4">
+              <FaWhatsapp className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-[#4a5d73] mb-2">Llámanos</h3>
+            <h3 className="text-xl font-bold text-[#4a5d73] mb-2">WhatsApp</h3>
             <p className="text-gray-600 mb-3">De lunes a viernes de 9:00 a 18:00h</p>
-            <a href="tel:+34XXXXXXXXX" className="text-lg font-medium text-[#4a5d73] hover:underline">+34 XXX XXX XXX</a>
+            <a href="https://wa.me/34699851245" target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-[#4a5d73] hover:underline">+34 699 851 245</a>
           </div>
           
           <div className="bg-white rounded-2xl shadow-lg p-6 transition-transform hover:scale-[1.02]">
@@ -178,7 +195,7 @@ export default function Contacto() {
             </div>
             <h3 className="text-xl font-bold text-[#4a5d73] mb-2">Escríbenos</h3>
             <p className="text-gray-600 mb-3">Responderemos en menos de 24 horas</p>
-            <a href="mailto:info@porfindormimos.es" className="text-lg font-medium text-[#4a5d73] hover:underline">info@porfindormimos.es</a>
+            <a href="mailto:porfindormimos@gmail.com" className="text-lg font-medium text-[#4a5d73] hover:underline">porfindormimos@gmail.com</a>
           </div>
           
           <div className="bg-white rounded-2xl shadow-lg p-6 transition-transform hover:scale-[1.02]">
@@ -201,7 +218,7 @@ export default function Contacto() {
               Completa el formulario y nos pondremos en contacto contigo lo antes posible. Estamos aquí para resolver todas tus dudas sobre el sueño infantil.
             </p>
             
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <form method="POST" action="https://formspree.io/f/xvgkbnpz" onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="font-medium text-gray-700 block mb-2" htmlFor="nombre">
@@ -326,7 +343,7 @@ export default function Contacto() {
             
             <div className="space-y-6 mb-10">
               <a 
-                href="https://wa.me/34XXXXXXXXX" 
+                href="https://wa.me/34699851245" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
@@ -336,12 +353,12 @@ export default function Contacto() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">WhatsApp</h3>
-                  <p className="text-gray-600">Chatea con nosotros</p>
+                  <p className="text-gray-600">+34 699851245</p>
                 </div>
               </a>
               
               <a 
-                href="https://instagram.com/porfindormimos" 
+                href="https://instagram.com/porfindormimos.es" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
@@ -351,12 +368,12 @@ export default function Contacto() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Instagram</h3>
-                  <p className="text-gray-600">@porfindormimos</p>
+                  <p className="text-gray-600">@porfindormimos.es</p>
                 </div>
               </a>
               
               <a 
-                href="mailto:info@porfindormimos.es" 
+                href="mailto:porfindormimos@gmail.com" 
                 className="flex items-center p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
               >
                 <div className="p-3 bg-[#4a5d73] rounded-xl mr-4">
@@ -364,7 +381,7 @@ export default function Contacto() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Email</h3>
-                  <p className="text-gray-600">info@porfindormimos.es</p>
+                  <p className="text-gray-600">porfindormimos@gmail.com</p>
                 </div>
               </a>
             </div>
@@ -390,13 +407,13 @@ export default function Contacto() {
         </div>
       </section>
       
-      {/* Calendario Section */}
+      {/* Contacto Directo Section */}
       <section className="px-5 py-16 bg-gradient-to-r from-[#4a5d73]/10 to-[#3d7d91]/10">
         <div className="max-w-[1000px] mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-800 mb-3">Reserva una consulta</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-3">Contacto Directo</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Encuentra un horario que te convenga y agenda una consulta gratuita de 15 minutos para discutir tus necesidades y el plan más adecuado para ti.
+              Contacta con nosotros directamente por WhatsApp para discutir tus necesidades y recibir recomendaciones personalizadas para el descanso de tu bebé.
             </p>
           </div>
           
@@ -404,13 +421,13 @@ export default function Contacto() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
 
               <div>
-                <h3 className="text-2xl font-bold text-[#4a5d73] mb-5">Consulta gratuita inicial</h3>
+                <h3 className="text-2xl font-bold text-[#4a5d73] mb-5">Consulta por WhatsApp</h3>
                 <ul className="space-y-4 mb-6">
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-gray-700">15 minutos de duración</span>
+                    <span className="text-gray-700">Respuesta rápida y directa</span>
                   </li>
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -432,23 +449,28 @@ export default function Contacto() {
                   </li>
                 </ul>
                 <a 
-                  href="/calendario" 
-                  target="_blank" 
-                  className="inline-flex items-center bg-[#4a5d73] text-white py-3 px-6 rounded-xl font-medium hover:bg-[#3d4f65] transition duration-200"
+                  href="https://wa.me/34699851245" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center bg-[#25D366] text-white py-3 px-6 rounded-xl font-medium hover:bg-[#20bd5a] transition duration-200"
                 >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
                   </svg>
-                  Ver calendario completo
+                  Contactar por WhatsApp
                 </a>
               </div>
               
-              <div className="bg-[#f8f9fa] p-3 sm:p-6 rounded-xl relative w-full">
-                <div className="w-full" style={{ maxWidth: '100%', overflow: 'hidden' }}>
-                  <CalendlyEmbed url="https://calendly.com/porfindormimos/consulta-servicio" height="350px" />
+              <div className="bg-[#f8f9fa] p-6 sm:p-8 rounded-xl relative w-full flex flex-col items-center justify-center">
+                <div className="w-24 h-24 bg-[#25D366] rounded-full flex items-center justify-center mb-6">
+                  <svg className="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+                  </svg>
                 </div>
-                <p className="text-sm text-gray-500 text-center mt-3">
-                  Selecciona una fecha y hora que te convenga para programar tu consulta gratuita.
+                <h3 className="text-2xl font-bold text-[#4a5d73] mb-2 text-center">+34 699851245</h3>
+                <p className="text-gray-600 mb-4 text-center">Disponible de lunes a viernes de 9:00 a 18:00h</p>
+                <p className="text-sm text-gray-500 text-center">
+                  Escríbenos directamente y te responderemos lo antes posible para ayudarte con el sueño de tu bebé.
                 </p>
               </div>
             </div>

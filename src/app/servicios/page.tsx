@@ -43,10 +43,15 @@ const ServiceCard = ({
   title, 
   price, 
   features, 
-  buttonText = "Comprar ahora", 
+  buttonText = "Contratar", // Cambiado de "Comprar ahora" a "Contratar"
   highlightColor = "bg-[#4a5d73]",
   highlighted = false 
 }: ServiceCardProps) => {
+  // Función para generar el mensaje predefinido para WhatsApp
+  const getWhatsAppMessage = (serviceTitle: string) => {
+    return encodeURIComponent(`Me gustaría contratar el plan de sueño: ${serviceTitle}`);
+  };
+
   return (
     <div className={`
       ${highlighted ? highlightColor : 'bg-white'} rounded-2xl shadow-lg p-6 flex flex-col h-full
@@ -69,15 +74,20 @@ const ServiceCard = ({
           ))}
         </ul>
       </div>
-      <button className={`
-        px-6 py-3 rounded-xl text-white font-semibold
-        transition-all duration-200
-        ${highlighted 
-          ? 'bg-yellow-400 hover:bg-yellow-500 text-gray-900' 
-          : `${highlightColor} hover:bg-[#2c3e50]`}
-      `}>
+      <a 
+        href={`https://wa.me/34699851245?text=${getWhatsAppMessage(title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`
+          px-6 py-3 rounded-xl text-white font-semibold
+          transition-all duration-200 text-center
+          ${highlighted 
+            ? 'bg-yellow-400 hover:bg-yellow-500 text-gray-900' 
+            : `${highlightColor} hover:bg-[#2c3e50]`}
+        `}
+      >
         {buttonText}
-      </button>
+      </a>
     </div>
   );
 };
@@ -147,7 +157,7 @@ export default function Servicios() {
                 Planes adaptados a cada familia para que todos puedan disfrutar de un sueño reparador. 
                 Nuestro enfoque personalizado garantiza resultados efectivos y duraderos.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex">
                 <button 
                   onClick={() => {
                     const planesElement = document.getElementById('planes');
@@ -159,15 +169,6 @@ export default function Servicios() {
                           transition-all duration-300 hover:bg-[#36485a] transform hover:-translate-y-1 shadow-md"
                 >
                   Explorar planes
-                </button>
-                <button 
-                  onClick={() => {
-                    window.open('https://calendly.com/dormirsinllorar/30min', '_blank');
-                  }}
-                  className="border-2 border-[#4a5d73] text-[#4a5d73] px-6 py-3 rounded-lg text-lg font-medium
-                          transition-all duration-300 hover:bg-gray-100 transform hover:-translate-y-1"
-                >
-                  Agendar consulta
                 </button>
               </div>
             </div>
@@ -247,17 +248,18 @@ export default function Servicios() {
 
         {/* Planes Básicos */}
         <div className={`${activeTab === 'basicos' ? 'block' : 'hidden'}`}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ServiceCard
-              title="Consulta"
-              price={getPrecioServicio("Consulta") || 99}
-              features={[
-                "Llamada de 30 minutos",
-                "Resolución rápida de dudas específicas",
-                "Recomendaciones personalizadas"
-              ]}
-            />
-            
+          <div className="flex justify-center">
+            <div className="w-full max-w-md">
+              <ServiceCard
+                title="Consulta"
+                price={getPrecioServicio("Consulta") || 99}
+                features={[
+                  "Llamada de 30 minutos",
+                  "Resolución rápida de dudas específicas",
+                  "Recomendaciones personalizadas"
+                ]}
+              />
+            </div>
           </div>
         </div>
 
@@ -298,39 +300,39 @@ export default function Servicios() {
 
         {/* Plan Hermanos */}
         <div className={`${activeTab === 'hermanos' ? 'block' : 'hidden'}`}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-            <ServiceCard
-              title="Hermanos Estándar"
-              price={getPrecioServicio("Hermanos Estándar") || 499}
-              features={[
-                "Plan para 2 hermanos",
-                "Videollamada inicial de 90 minutos",
-                "Seguimiento durante 3 semanas",
-                "Ajustes semanales personalizados para cada niño"
-              ]}
-              highlighted={true}
-              highlightColor="bg-[#5d5d91]"
-            />
-            
+          <div className="flex justify-center">
+            <div className="w-full max-w-md">
+              <ServiceCard
+                title="Hermanos Estándar"
+                price={getPrecioServicio("Hermanos Estándar") || 499}
+                features={[
+                  "Plan para 2 hermanos",
+                  "Videollamada inicial de 90 minutos",
+                  "Seguimiento durante 3 semanas",
+                  "Ajustes semanales personalizados para cada niño"
+                ]}
+                highlighted={true}
+                highlightColor="bg-[#5d5d91]"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Consulta Gratuita Section */}
+      {/* Contacto por WhatsApp Section */}
       <section className="py-16 px-5 bg-gradient-to-r from-[#4a5d73] to-[#3d7d91]">
         <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2 text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">¿No estáis seguros de qué plan elegir?</h2>
             <p className="text-lg opacity-90 mb-6">
-              Agenda una consulta gratuita de 15 minutos para discutir tus necesidades y recibir una recomendación personalizada sobre el plan más adecuado para ti y tu familia.
+              Contáctanos directamente por WhatsApp para resolver tus dudas y recibir una recomendación personalizada sobre el plan más adecuado para ti y tu familia.
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-yellow-300 mr-2 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Sin compromiso de contratación</span>
+                <span>Respuesta rápida y directa</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-yellow-300 mr-2 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -347,36 +349,30 @@ export default function Servicios() {
             </ul>
           </div>
           <div className="md:w-1/2 bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-bold text-[#4a5d73] mb-5 text-center">Agenda tu consulta gratuita</h3>
+            <h3 className="text-2xl font-bold text-[#4a5d73] mb-5 text-center">Contáctanos por WhatsApp</h3>
             <div className="mb-6 text-center">
-              <p className="text-gray-600 mb-5">Selecciona una fecha y hora que te convenga y nos pondremos en contacto contigo para confirmar tu cita.</p>
-              <div className="relative overflow-hidden pb-6 h-[200px] mb-2 bg-gray-50 rounded-lg">
-                <CalendlyEmbed url="https://calendly.com/porfindormimos/consulta-servicio" height="200px" />
+              <p className="text-gray-600 mb-6">Escríbenos directamente para recibir información sobre nuestros servicios y resolver tus dudas.</p>
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-[#25D366] flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                </div>
               </div>
-              <p className="text-sm text-gray-500">O contáctanos directamente por WhatsApp</p>
+              <p className="text-xl font-bold text-[#4a5d73] mb-2">699851245</p>
+              <p className="text-sm text-gray-500">Disponible de lunes a viernes de 9:00 a 20:00h</p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a 
-                href="/calendario" 
-                className="flex-1 bg-[#4a5d73] text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-[#3d4f65] transition duration-200 flex items-center justify-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                Ver calendario
-              </a>
-              <a 
-                href="https://wa.me/34XXXXXXXXX" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex-1 bg-[#25D366] text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-[#20bd5a] transition duration-200 flex items-center justify-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                WhatsApp
-              </a>
-            </div>
+            <a 
+              href="https://wa.me/34699851245" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full bg-[#25D366] text-white py-4 px-6 rounded-xl font-semibold text-center hover:bg-[#20bd5a] transition duration-200 flex items-center justify-center text-lg"
+            >
+              <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Contactar por WhatsApp
+            </a>
           </div>
         </div>
       </section>
