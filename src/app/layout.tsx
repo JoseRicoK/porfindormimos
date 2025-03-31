@@ -5,6 +5,16 @@ import ClientLayout from "./ClientLayout"; // Importamos un Wrapper del lado del
 export const metadata: Metadata = {
   title: "Por Fin Dormimos",
   description: "Asesoría de sueño infantil",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Por Fin Dormimos",
+    statusBarStyle: "default",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
