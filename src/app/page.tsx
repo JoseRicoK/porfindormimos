@@ -252,7 +252,7 @@ export default function Home() {
             <div className="relative w-[160px] h-[200px] -mt-8 mb-6">
               <Image
                 src={monicaPhoto}
-                alt="María Prados Ruiz"
+                alt="Mónica Prados Ruiz"
                 width={160}
                 height={200}
                 className="object-contain"
