@@ -229,7 +229,7 @@ export default function Home() {
           <div className="absolute bottom-0 right-0 w-[170px] h-[260px] mt-8 mr-6 ">
             <Image
               src={monicaPhoto}
-              alt="María Prados Ruiz"
+              alt="Mónica Prados Ruiz de Almiron"
               width={170}
               height={200}
               className="object-contain"
