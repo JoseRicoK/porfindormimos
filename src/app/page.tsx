@@ -4,6 +4,80 @@ import bebeDurmiendo from '@/assets/images/bebe_durmiendo.jpg';
 import paulaPhoto from '@/assets/images/paula-bg.png';
 import monicaPhoto from '@/assets/images/monica-bg.png';
 import certificado from '@/assets/images/certi.png';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Por Fin Dormimos | Asesoría de Sueño Infantil",
+  description: "Asesoría de sueño infantil profesional para que tú y tu bebé podáis descansar mejor. Planes personalizados, seguimiento y mucho más.",
+  keywords: "sueño infantil, dormir bebé, asesoría de sueño, plan de sueño bebé, consultoría sueño, Por Fin Dormimos",
+  robots: "index, follow",
+  openGraph: {
+    title: "Por Fin Dormimos | Asesoría de Sueño Infantil",
+    description: "Transformamos las noches sin dormir en descanso familiar. Descubre nuestros servicios personalizados de sueño infantil.",
+    url: "https://porfindormimos.es",
+    type: "website",
+    images: [
+      {
+        url: "https://porfindormimos.es/og-image-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Por Fin Dormimos - Asesoría de Sueño Infantil"
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Por Fin Dormimos | Asesoría de Sueño Infantil",
+    description: "Asesoría profesional para mejorar el sueño de tu bebé.",
+    images: ["https://porfindormimos.es/og-image-home.jpg"],
+  },
+  alternates: {
+    canonical: "https://porfindormimos.es",
+  },
+  authors: [
+    { name: "Por Fin Dormimos" }
+  ],
+  other: {
+    'script:ld+json': JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      'name': 'Por Fin Dormimos',
+      'image': 'https://porfindormimos.es/og-image-home.jpg',
+      'description': 'Asesoría de sueño infantil profesional para que tú y tu bebé podáis descansar mejor.',
+      'url': 'https://porfindormimos.es',
+      'telephone': '+34666666666', // Reemplaza con tu número de teléfono real
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Madrid', // Reemplaza con tu ubicación real
+        'addressRegion': 'Madrid',
+        'addressCountry': 'ES'
+      },
+      'priceRange': '€€',
+      'openingHoursSpecification': [
+        {
+          '@type': 'OpeningHoursSpecification',
+          'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          'opens': '09:00',
+          'closes': '18:00'
+        }
+      ],
+      'sameAs': [
+        'https://www.instagram.com/porfindormimos',
+        'https://www.facebook.com/porfindormimos'
+        // Añade aquí más redes sociales si las tienes
+      ],
+      'serviceType': 'Asesoría de sueño infantil',
+      'mainEntityOfPage': 'https://porfindormimos.es',
+      'offers': {
+        '@type': 'AggregateOffer',
+        'priceCurrency': 'EUR',
+        'highPrice': '350',
+        'lowPrice': '90',
+        'offerCount': '3'
+      }
+    })
+  }
+};
 
 export default function Home() {
   return (
@@ -344,6 +418,66 @@ export default function Home() {
               &quot;Nos cambió la vida, realmente es una inversión en salud y mejora el ambiente familiar.&quot;
             </p>
             <span className="font-bold text-gray-800">— Antón García</span>
+          </div>
+        </div>
+      </section>
+      
+      {/* Sección FAQ - Importante para SEO */}
+      <section className="py-20 px-5 bg-white border-t border-gray-100" id="preguntas-frecuentes">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[#4a5d73] font-medium mb-3 block">RESOLVEMOS TUS DUDAS</span>
+            <h2 className="text-3xl font-bold text-gray-800 md:text-2xl relative inline-block">
+              <span className="relative z-10">Preguntas Frecuentes sobre Sueño Infantil</span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#a3c5e9] z-0"></span>
+            </h2>
+          </div>
+          
+          <div className="space-y-6" itemScope itemType="https://schema.org/FAQPage">
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h3 className="text-xl font-semibold text-[#4a5d73]" itemProp="name">¿A qué edad puedo empezar el acompañamiento del sueño con mi bebé?</h3>
+              <div className="mt-3" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <div itemProp="text" className="text-gray-600">
+                  <p>Podemos trabajar con bebés desde los 4 meses de edad. Sin embargo, cada niño es diferente y adaptamos nuestras metodologías según su desarrollo. Para bebés menores, ofrecemos asesoramiento preventivo para establecer buenos hábitos desde el principio.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h3 className="text-xl font-semibold text-[#4a5d73]" itemProp="name">¿Cuánto tiempo tardará mi bebé en aprender a dormir mejor?</h3>
+              <div className="mt-3" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <div itemProp="text" className="text-gray-600">
+                  <p>La mayoría de las familias comienzan a ver mejoras significativas en 3-5 días siguiendo nuestro plan. Para una consolidación completa del sueño, generalmente recomendamos un seguimiento de 2-4 semanas para afianzar los nuevos hábitos.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h3 className="text-xl font-semibold text-[#4a5d73]" itemProp="name">¿Usáis el método de extinción ("dejar llorar")?</h3>
+              <div className="mt-3" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <div itemProp="text" className="text-gray-600">
+                  <p>No. Nuestra metodología es respetuosa y siempre contempla la presencia y el acompañamiento de los padres. Adaptamos las estrategias al temperamento de cada niño y a la filosofía de crianza de cada familia, buscando el equilibrio entre el aprendizaje del sueño y el bienestar emocional.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h3 className="text-xl font-semibold text-[#4a5d73]" itemProp="name">¿Y si mi bebé está en periodo de lactancia?</h3>
+              <div className="mt-3" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <div itemProp="text" className="text-gray-600">
+                  <p>Nuestros planes son totalmente compatibles con la lactancia materna. Nunca recomendamos destetar para mejorar el sueño. Trabajamos para conseguir un equilibrio entre las necesidades nutricionales del bebé y el establecimiento de patrones de sueño saludables.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-6 shadow-sm" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h3 className="text-xl font-semibold text-[#4a5d73]" itemProp="name">¿Qué diferencia hay entre los distintos planes que ofrecéis?</h3>
+              <div className="mt-3" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <div itemProp="text" className="text-gray-600">
+                  <p>La principal diferencia está en el nivel de acompañamiento. El plan básico incluye evaluación y plan personalizado. Los planes de seguimiento añaden apoyo continuo durante 2-4 semanas con ajustes diarios. El plan hermanos está diseñado específicamente para coordinar el sueño de varios niños en el mismo hogar.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
