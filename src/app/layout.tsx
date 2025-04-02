@@ -27,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <body className="min-h-screen relative bg-white text-gray-800" suppressHydrationWarning={true}>
         <ClientLayout>{children}</ClientLayout>
+        <SpeedInsights />
       </body>
     </html>
   );
