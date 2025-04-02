@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientLayout from "./ClientLayout"; // Importamos un Wrapper del lado del cliente
+
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: "Por Fin Dormimos",
@@ -28,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen relative bg-white text-gray-800" suppressHydrationWarning={true}>
         <ClientLayout>{children}</ClientLayout>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
