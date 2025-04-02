@@ -293,7 +293,7 @@ export default async function ArticlePage({ params }: { params: SlugParams }) {
             </Link>
             
             <Link
-              href="/calendario"
+              href="/contacto"
               className="bg-white text-[#4a5d73] border border-[#4a5d73] px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition duration-200"
             >
               Agenda una consulta
