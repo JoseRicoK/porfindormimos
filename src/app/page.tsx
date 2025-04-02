@@ -222,7 +222,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Maria Card */}
+      {/* Mónica Card */}
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
         {/* Desktop Layout */}
         <div className="relative h-[260px] bg-gradient-to-r from-[#d4e7fa] to-[#e8f2fd] hidden md:block">
@@ -245,7 +245,7 @@ export default function Home() {
         {/* Mobile Layout */}
         <div className="md:hidden">
           <div className="bg-gradient-to-r from-[#d4e7fa] to-[#e8f2fd] p-5">
-            <h3 className="text-2xl font-bold text-[#2c3e50] mb-2">María Prados Ruiz</h3>
+            <h3 className="text-2xl font-bold text-[#2c3e50] mb-2">Mónica Prados Ruiz de Almiron</h3>
             <p className="text-sm font-medium text-[#4a5d73] mb-4">Asesora de Sueño Infantil</p>
           </div>
           <div className="flex justify-center bg-gradient-to-r from-[#d4e7fa] to-[#e8f2fd] py-2 relative">
