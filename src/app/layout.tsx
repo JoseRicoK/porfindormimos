@@ -25,6 +25,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <head>
+        {/* Google Analytics - Direct implementation for verification */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-DGNS34JZVX" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DGNS34JZVX');
+          `}
+        </Script>
       </head>
       {/* 
         Using suppressHydrationWarning will prevent hydration mismatches 
