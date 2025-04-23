@@ -104,10 +104,10 @@ export default function Footer() {
             &copy; {currentYear} Por Fin Dormimos. Todos los derechos reservados.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-xs text-gray-500">
-            <Link href="/privacidad" className="hover:text-gray-700 transition-colors duration-300">
+            <Link href="/politica-de-privacidad" className="hover:text-gray-700 transition-colors duration-300">
               Política de Privacidad
             </Link>
-            <Link href="/cookies" className="hover:text-gray-700 transition-colors duration-300">
+            <Link href="/politica-de-cookies" className="hover:text-gray-700 transition-colors duration-300">
               Política de Cookies
             </Link>
             <Link href="/aviso-legal" className="hover:text-gray-700 transition-colors duration-300">
