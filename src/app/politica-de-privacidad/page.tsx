@@ -59,6 +59,7 @@ export default function PrivacyPolicyPage() {
         <ul className="list-disc pl-6 my-4">
           <li>Proveedores de servicios que proporcionan servicios de TI y administración de sistemas, como nuestro proveedor de hosting Render.</li>
           <li>Nuestro sistema de gestión de contenidos Strapi para proporcionar y gestionar el contenido del sitio web.</li>
+          <li>Freeform, nuestro servicio de procesamiento de formularios, que recopila la información que proporciona cuando nos contacta, incluyendo su dirección de correo electrónico.</li>
           <li>Terceros como Google y Vercel, que proporcionan servicios de análisis.</li>
           <li>WhatsApp (Meta) cuando decide contactarnos a través de este canal.</li>
         </ul>
@@ -103,6 +104,7 @@ export default function PrivacyPolicyPage() {
           <li><strong>Google Analytics (Google LLC)</strong>: Utilizado para analizar el tráfico del sitio web. Google puede utilizar los datos recopilados para contextualizar y personalizar los anuncios de su propia red publicitaria. ID: G-DGNS34JZVX</li>
           <li><strong>Vercel Analytics y Vercel SpeedInsights</strong>: Utilizados para analizar el rendimiento y el uso del sitio web.</li>
           <li><strong>WhatsApp Business (Meta Platforms, Inc.)</strong>: Utilizado como canal de comunicación cuando el usuario decide contactarnos a través de este medio.</li>
+          <li><strong>Freeform</strong>: Utilizado para procesar los formularios de contacto y recopilar la información que proporciona, como su nombre y dirección de correo electrónico para poder responder a sus consultas.</li>
           <li><strong>Strapi CMS</strong>: Nuestro sistema de gestión de contenidos que almacena el contenido del sitio web.</li>
           <li><strong>Render</strong>: Nuestro proveedor de hosting que aloja la infraestructura del sitio web.</li>
         </ul>

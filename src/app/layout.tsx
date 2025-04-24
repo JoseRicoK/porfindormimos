@@ -107,6 +107,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               };
               (tarteaucitron.job = tarteaucitron.job || []).push('whatsapp');
               
+              // Freeform (formularios de contacto)
+              tarteaucitron.services.freeform = {
+                "key": "freeform",
+                "type": "api",
+                "name": "Freeform",
+                "needConsent": true,
+                "cookies": ['freeform_session', 'freeform_form_data'],
+                "js": function () {
+                  // Habilitar formularios de Freeform cuando se da consentimiento
+                  // Esto es más bien informativo, ya que los formularios se cargan con el sitio
+                  if (document.querySelector('form[data-freeform]')) {
+                    // Los formularios de Freeform ya están habilitados
+                  }
+                },
+                "fallback": function () {
+                  // Deshabilitar formularios si se rechaza el consentimiento
+                  // Esto mostraría un mensaje en lugar del formulario
+                  const formContainers = document.querySelectorAll('form[data-freeform]');
+                  formContainers.forEach(container => {
+                    if (container) {
+                      container.innerHTML = '<div class="p-4 text-center bg-gray-100 rounded-lg"><p>Para utilizar nuestro formulario de contacto, por favor acepte las cookies de funcionalidad.</p></div>';
+                    }
+                  });
+                }
+              };
+              (tarteaucitron.job = tarteaucitron.job || []).push('freeform');
+              
               // Vercel Analytics
               tarteaucitron.services.vercelanalytics = {
                 "key": "vercelanalytics",
