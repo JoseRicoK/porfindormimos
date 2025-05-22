@@ -322,14 +322,14 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-[#2c3e50] mb-2">Mónica Prados Ruiz de Almiron</h3>
             <p className="text-sm font-medium text-[#4a5d73] mb-4">Asesora de Sueño Infantil</p>
           </div>
-          <div className="flex justify-center bg-gradient-to-r from-[#d4e7fa] to-[#e8f2fd] py-2 relative">
-            <div className="relative w-[160px] h-[200px] -mt-8 mb-6">
+          <div className="flex justify-center bg-gradient-to-r from-[#d4e7fa] to-[#e8f2fd] py-4 relative">
+            <div className="relative w-[120px] h-[140px] -mt-10 mb-12">
               <Image
                 src={monicaPhoto}
                 alt="Mónica Prados Ruiz"
-                width={160}
-                height={200}
-                className="object-contain"
+                width={120}
+                height={140}
+                className="object-contain object-top"
                 unoptimized
               />
             </div>
